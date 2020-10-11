@@ -46,6 +46,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -65,6 +69,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.vb" />
+    <Compile Include="Components\RibbonButton.designer.vb">
+      <DependentUpon>RibbonButton.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\RibbonButton.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\RibbonButtonMenu.Designer.vb">
+      <DependentUpon>RibbonButtonMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\RibbonButtonMenu.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\RibbonPanel.Designer.vb">
+      <DependentUpon>RibbonPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\RibbonPanel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -82,6 +104,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Components\RibbonButton.resx">
+      <DependentUpon>RibbonButton.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\RibbonButtonMenu.resx">
+      <DependentUpon>RibbonButtonMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\RibbonPanel.resx">
+      <DependentUpon>RibbonPanel.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -100,5 +131,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
