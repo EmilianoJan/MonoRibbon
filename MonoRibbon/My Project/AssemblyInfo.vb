@@ -9,11 +9,11 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("MonoRibbon")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyDescription("A Cross platform set of Ribbon like components")>
+<Assembly: AssemblyCompany("Emi_Jan")>
 <Assembly: AssemblyProduct("MonoRibbon")>
 <Assembly: AssemblyCopyright("Copyright ©  2020")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyTrademark("MonoRibbonEmi_Jan")>
 
 <Assembly: ComVisible(False)>
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/EmilianoJan/MonoRibbon</projectUrl>
+    <iconUrl>https://github.com/EmilianoJan/MonoRibbon</iconUrl>
+    <description> Cross platform Ribbon components for winforms applications.</description>
+    <releaseNotes>First release of the package.</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>Ribbon Mono Winforms</tags>
+  </metadata>
+</package>
