@@ -1,0 +1,5 @@
+﻿Pasos par generar el paquete.
+1. Colocar el nuget.exe en la carpeta de la solución
+2. Abrir un CMD y navegar a la carpeta de la solución.
+3. ejecutar -> nuget spec MonoRibbon.vbproj
+4. ejecutar -> nuget pack
