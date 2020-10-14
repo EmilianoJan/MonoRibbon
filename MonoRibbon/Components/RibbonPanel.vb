@@ -21,26 +21,48 @@ Namespace RibbonComponents
         End Property
         Dim textBack As String
 
+        '<DesignerSerializationVisibility(DesignerSerializationVisibility.Content)>
+        'Public ReadOnly Property ContentsPanel As Panel
+        '    Get
+        '        Return Panel1
+        '    End Get
+        'End Property
+
+
         <DesignerSerializationVisibility(DesignerSerializationVisibility.Content)>
-        Public ReadOnly Property ContentsPanel As Panel
+        Public Property ContentsPanel As Panel
             Get
                 Return Panel1
             End Get
+            Set(value As Panel)
+                If IsNothing(value) = False Then
+                    Panel1 = value
+                End If
+            End Set
         End Property
 
         Private Sub RibbonPanelP_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        End Sub
-
-        Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+            'If IsNothing(Me.ContentsPanel) = True Then
+            '    InitializeComponent()
+            '    TypeDescriptor.AddAttributes(Me.ContentsPanel, New DesignerAttribute(GetType(MyPanelDesigner)))
+            'End If
+            '
+            'MyBase.New()
+            'InitializeComponent()
+            'Me.ResumeLayout(True)
+            'Me.Update()
+            'TypeDescriptor.AddAttributes(Me.ContentsPanel, New DesignerAttribute(GetType(MyPanelDesigner)))
 
         End Sub
 
         Public Sub New()
+            MyBase.New()
             InitializeComponent()
-            TypeDescriptor.AddAttributes(Me.ContentsPanel, New DesignerAttribute(GetType(MyPanelDesigner)))
-        End Sub
+            Me.ResumeLayout(True)
+            Me.Update()
+            'TypeDescriptor.AddAttributes(Me.ContentsPanel, New DesignerAttribute(GetType(MyPanelDesigner)))
 
+        End Sub
 
     End Class
 
@@ -49,7 +71,9 @@ Namespace RibbonComponents
 
         Public Overrides Sub Initialize(ByVal component As IComponent)
             MyBase.Initialize(component)
-            Dim contentsPanel = (CType(Me.Control, RibbonPanelP)).ContentsPanel
+            'Dim contentsPanel = (CType(Me.Control, RibbonPanelP)).ContentsPanel
+            Dim objeto As RibbonPanelP = Me.Control
+            Dim contentsPanel = objeto.ContentsPanel
             Me.EnableDesignMode(contentsPanel, "ContentsPanel")
         End Sub
 
