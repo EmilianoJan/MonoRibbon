@@ -52,9 +52,19 @@ Namespace RibbonComponents
         End Sub
 
         Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-            Dim pos As New Point(0, Button2.Height)
+            If IsNothing(ContextMenuStrip) = False Then
+                Dim pos As New Point(0, Button2.Height)
+                ContextMenuStrip.Show(Button2, pos)
+            End If
+        End Sub
 
-            ContextMenuStrip.Show(Button2, pos)
+        Sub New()
+
+            ' This call is required by the designer.
+            InitializeComponent()
+
+            ' Add any initialization after the InitializeComponent() call.
+            Me.Dock = DockStyle.Left
         End Sub
     End Class
 End Namespace
