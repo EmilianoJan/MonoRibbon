@@ -9,8 +9,9 @@ Namespace RibbonComponents
     <Designer(GetType(MyUserControlDesignerB))>
     Public Class RibbonPanelP : Inherits UserControl
 
-
-        Public Property Caption As String
+        <System.ComponentModel.Category("Ribbon")>
+        <System.ComponentModel.Description("Sets or gets the text show in the panel text")>
+        Public Property PanelText As String
             Get
                 Return textBack
             End Get
@@ -21,6 +22,47 @@ Namespace RibbonComponents
         End Property
         Dim textBack As String
 
+
+        <System.ComponentModel.Category("Ribbon")>
+        <System.ComponentModel.Description("Sets or gets the BackColor of the panel")>
+        Public Property PanelBackColor As Color
+            Get
+                Return PanelBackColorB
+            End Get
+            Set(value As Color)
+                PanelBackColorB = value
+                Label1.BackColor = PanelBackColorB
+                TableLayoutPanel1.BackColor = PanelBackColorB
+            End Set
+        End Property
+        Dim PanelBackColorB As Color
+
+        <System.ComponentModel.Category("Ribbon")>
+        <System.ComponentModel.Description("Sets or gets the BackColor of the panel component area.")>
+        Public Property ComponentAreaBackColor As Color
+            Get
+                Return PanelWindowBackColorB
+            End Get
+            Set(value As Color)
+                PanelWindowBackColorB = value
+                Panel1.BackColor = PanelWindowBackColorB
+            End Set
+        End Property
+        Dim PanelWindowBackColorB As Color
+
+
+        <System.ComponentModel.Category("Ribbon")>
+        <System.ComponentModel.Description("Label properties of de panel.")>
+        <DesignerSerializationVisibility(DesignerSerializationVisibility.Content)>
+        Public Property Label As Label
+            Get
+                Return Label1
+            End Get
+            Set(value As Label)
+
+            End Set
+        End Property
+
         '<DesignerSerializationVisibility(DesignerSerializationVisibility.Content)>
         'Public ReadOnly Property ContentsPanel As Panel
         '    Get
@@ -28,7 +70,8 @@ Namespace RibbonComponents
         '    End Get
         'End Property
 
-
+        <System.ComponentModel.Category("Ribbon")>
+        <System.ComponentModel.Description("")>
         <DesignerSerializationVisibility(DesignerSerializationVisibility.Content)>
         Public Property ContentsPanel As Panel
             Get
@@ -61,9 +104,12 @@ Namespace RibbonComponents
             Me.ResumeLayout(True)
             Me.Update()
             'TypeDescriptor.AddAttributes(Me.ContentsPanel, New DesignerAttribute(GetType(MyPanelDesigner)))
-
+            Me.Dock = DockStyle.Left
         End Sub
 
+        Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
+        End Sub
     End Class
 
     Public Class MyUserControlDesignerB
@@ -75,6 +121,7 @@ Namespace RibbonComponents
             Dim objeto As RibbonPanelP = Me.Control
             Dim contentsPanel = objeto.ContentsPanel
             Me.EnableDesignMode(contentsPanel, "ContentsPanel")
+            objeto.Dock = DockStyle.Left
         End Sub
 
         Public Overrides Function CanParent(ByVal control As Control) As Boolean

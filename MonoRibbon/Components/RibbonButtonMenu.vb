@@ -57,5 +57,14 @@ Namespace RibbonComponents
                 ContextMenuStrip.Show(Button2, pos)
             End If
         End Sub
+
+        Sub New()
+
+            ' This call is required by the designer.
+            InitializeComponent()
+
+            ' Add any initialization after the InitializeComponent() call.
+            Me.Dock = DockStyle.Left
+        End Sub
     End Class
 End Namespace

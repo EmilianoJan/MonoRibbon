@@ -85,6 +85,12 @@
     <Compile Include="Components\RibbonButtonMenu.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Components\RibbonFormBorder.Designer.vb">
+      <DependentUpon>RibbonFormBorder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\RibbonFormBorder.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Components\RibbonPanel.Designer.vb">
       <DependentUpon>RibbonPanel.vb</DependentUpon>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\RibbonButtonMenu.resx">
       <DependentUpon>RibbonButtonMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\RibbonFormBorder.resx">
+      <DependentUpon>RibbonFormBorder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\RibbonPanel.resx">
       <DependentUpon>RibbonPanel.vb</DependentUpon>
