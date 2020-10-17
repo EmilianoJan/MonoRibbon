@@ -24,11 +24,16 @@ Namespace RibbonComponents
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
+            Me.components = New System.ComponentModel.Container()
             Me.Panel1 = New System.Windows.Forms.Panel()
             Me.Label2 = New System.Windows.Forms.Label()
             Me.Button2 = New System.Windows.Forms.Label()
             Me.Button3 = New System.Windows.Forms.Label()
             Me.Label1 = New System.Windows.Forms.Label()
+            Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+            Me.ShowStandarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.ShowCustomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.ContextMenuStrip1.SuspendLayout()
             Me.SuspendLayout()
             '
             'Panel1
@@ -84,10 +89,29 @@ Namespace RibbonComponents
             Me.Label1.Text = "Label1"
             Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
+            'ContextMenuStrip1
+            '
+            Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShowStandarToolStripMenuItem, Me.ShowCustomToolStripMenuItem})
+            Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+            Me.ContextMenuStrip1.Size = New System.Drawing.Size(181, 70)
+            '
+            'ShowStandarToolStripMenuItem
+            '
+            Me.ShowStandarToolStripMenuItem.Name = "ShowStandarToolStripMenuItem"
+            Me.ShowStandarToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+            Me.ShowStandarToolStripMenuItem.Text = "Show standar"
+            '
+            'ShowCustomToolStripMenuItem
+            '
+            Me.ShowCustomToolStripMenuItem.Name = "ShowCustomToolStripMenuItem"
+            Me.ShowCustomToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+            Me.ShowCustomToolStripMenuItem.Text = "Show custom"
+            '
             'RibbonFormBorder
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
             Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+            Me.ContextMenuStrip = Me.ContextMenuStrip1
             Me.Controls.Add(Me.Label1)
             Me.Controls.Add(Me.Button3)
             Me.Controls.Add(Me.Button2)
@@ -95,6 +119,7 @@ Namespace RibbonComponents
             Me.Controls.Add(Me.Label2)
             Me.Name = "RibbonFormBorder"
             Me.Size = New System.Drawing.Size(516, 49)
+            Me.ContextMenuStrip1.ResumeLayout(False)
             Me.ResumeLayout(False)
 
         End Sub
@@ -103,5 +128,8 @@ Namespace RibbonComponents
         Friend WithEvents Button2 As Windows.Forms.Label
         Friend WithEvents Button3 As Windows.Forms.Label
         Friend WithEvents Label1 As Windows.Forms.Label
+        Friend WithEvents ContextMenuStrip1 As Windows.Forms.ContextMenuStrip
+        Friend WithEvents ShowStandarToolStripMenuItem As Windows.Forms.ToolStripMenuItem
+        Friend WithEvents ShowCustomToolStripMenuItem As Windows.Forms.ToolStripMenuItem
     End Class
 End Namespace

@@ -55,16 +55,34 @@ Namespace RibbonComponents
         End Property
         Dim BorderBackColorB As Color
 
+        <System.ComponentModel.Category("Ribbon")>
+        <System.ComponentModel.Description("Color of the font.")>
+        Public Property TitleText As String
+            Get
+                Return TitleTextB
+            End Get
+            Set(value As String)
+                TitleTextB = value
+                Label1.Text = TitleTextB
+            End Set
+        End Property
+        Dim TitleTextB As String
+
+
         Dim drag As Boolean
         Dim mousex As Integer
         Dim mousey As Integer
         Dim WithEvents formOri As Form
         Private Sub RibbonFormBorder_MouseDown(sender As Object, e As MouseEventArgs) Handles Me.MouseDown, Label1.MouseDown
-            drag = True 'Sets the variable drag to true.
-            formOri = GetParentForm(Me)
-            If formOri IsNot Nothing Then
-                mousex = Cursor.Position.X - formOri.Left 'Sets variable mousex
-                mousey = Cursor.Position.Y - formOri.Top 'Sets variable mousey
+            If e.Button = MouseButtons.Left Then
+                drag = True 'Sets the variable drag to true.
+                formOri = GetParentForm(Me)
+                If formOri IsNot Nothing Then
+                    mousex = Cursor.Position.X - formOri.Left 'Sets variable mousex
+                    mousey = Cursor.Position.Y - formOri.Top 'Sets variable mousey
+                End If
+            Else
+                ContextMenuStrip1.Show(MousePosition.X, MousePosition.Y)
             End If
         End Sub
 
@@ -112,7 +130,7 @@ Namespace RibbonComponents
                     Case FormWindowState.Maximized
                         Button2.Text = "🗗︎"
                 End Select
-                Label1.Text = formOri.Text
+                'Label1.Text = formOri.Text
             Else
                 If System.Environment.OSVersion.Platform = PlatformID.Unix Then
                     Button2.Text = "▄"
@@ -144,12 +162,21 @@ Namespace RibbonComponents
                         Else
                             Button2.Text = "🗗"
                         End If
+                        'With formOri
+                        '    .Text = "h"
+                        '    .WindowState = FormWindowState.Maximized
+                        '    .MaximumSize = .Size
+                        '    .Text = ""
+                        'End With
+                        'Dim tam As Rectangle = Screen.FromControl(formOri).WorkingArea 
+                        Dim tam As Rectangle = Screen.GetWorkingArea(formOri)
+                        'formOri.MaximumSize = New Size(tam.Width, tam.Height)
 
+                        formOri.MaximumSize = New Size(tam.Width + 70, tam.Height + 15)
+                        'formOri.MaximumSize = SystemInformation.VerticalResizeBorderThickness 
                         formOri.WindowState = FormWindowState.Maximized
-
-
                 End Select
-                Label1.Text = formOri.Text
+                'Label1.Text = formOri.Text
             End If
         End Sub
 
@@ -165,7 +192,7 @@ Namespace RibbonComponents
                 '        formOri.WindowState = FormWindowState.Maximized
                 'End Select
                 formOri.WindowState = FormWindowState.Minimized
-                Label1.Text = formOri.Text
+                'Label1.Text = formOri.Text
             End If
         End Sub
 
@@ -222,12 +249,61 @@ Namespace RibbonComponents
             Button3.BackColor = colo 'System.Drawing.SystemColors.Control
         End Sub
 
-        Private Sub formOri_TextChanged(sender As Object, e As EventArgs) Handles formOri.TextChanged
-            Label1.Text = formOri.Text
-        End Sub
+        'Private Sub formOri_TextChanged(sender As Object, e As EventArgs) Handles formOri.TextChanged
+        '    Label1.Text = formOri.Text
+        'End Sub
 
         Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
 
+        End Sub
+
+        Private Sub RibbonFormBorder_Load(sender As Object, e As EventArgs) Handles Me.Load
+            formOri = GetParentForm(Me)
+            If formOri IsNot Nothing Then
+                formOri.Text = ""
+                formOri.ControlBox = False
+                formOri.MaximizeBox = False
+                formOri.MinimizeBox = False
+                'formOri.BackColor = BorderBackColorB
+            End If
+        End Sub
+
+        Private Sub Label1_DoubleClick(sender As Object, e As EventArgs) Handles Label1.DoubleClick
+            formOri = GetParentForm(Me)
+            If formOri IsNot Nothing Then
+                Select Case formOri.WindowState
+                    Case FormWindowState.Maximized
+                        'Button2.Text = "🗗︎"
+                        formOri.WindowState = FormWindowState.Normal
+                    Case FormWindowState.Normal
+                        'Button2.Text = "🗖︎"
+                        formOri.WindowState = FormWindowState.Maximized
+                End Select
+            End If
+        End Sub
+
+        Private Sub ShowStandarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowStandarToolStripMenuItem.Click
+            formOri = GetParentForm(Me)
+            If formOri IsNot Nothing Then
+                formOri.ControlBox = True
+                formOri.MaximizeBox = True
+                formOri.MinimizeBox = True
+                Label2.Visible = False
+                Button3.Visible = False
+                Button2.Visible = False
+            End If
+        End Sub
+
+        Private Sub ShowCustomToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowCustomToolStripMenuItem.Click
+            formOri = GetParentForm(Me)
+            If formOri IsNot Nothing Then
+                formOri.ControlBox = False
+                formOri.MaximizeBox = False
+                formOri.MinimizeBox = False
+                Label2.Visible = True
+                Button3.Visible = True
+                Button2.Visible = True
+            End If
         End Sub
     End Class
 
